@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'core/ui/barbershop_theme.dart';
 import 'core/ui/widgets/barbershop_loader.dart';
-import 'features/auth/loginl/login_page.dart';
+import 'features/auth/login/login_page.dart';
 import 'features/splash/splash_page.dart';
 
 class BarbershopApp extends StatelessWidget {
@@ -21,6 +21,8 @@ class BarbershopApp extends StatelessWidget {
           routes: {
             '/': (_) => const SplashPage(),
             '/auth/login': (_) => const LoginPage(),
+            '/home/adm': (_) => const Text('ADM'),
+            '/home/employee': (_) => const Text('Employee'),
           },
         );
       },
