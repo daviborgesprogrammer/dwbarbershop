@@ -7,6 +7,7 @@ import 'package:dio/dio.dart';
 import '../../core/exceptions/auth_exceptions.dart';
 import '../../core/exceptions/repository_exception.dart';
 import '../../core/fp/either.dart';
+import '../../core/fp/nil.dart';
 import '../../core/restClient/rest_client.dart';
 import '../../model/user_model.dart';
 import './user_repository.dart';
@@ -58,4 +59,28 @@ class UserRepositoryImpl implements UserRepository {
       return Failure(RepositoryException(message: 'Invalid Json'));
     }
   }
+
+  @override
+  Future<Either<RepositoryException, Nil>> registerAdmin(
+    ({String email, String name, String password}) userData,
+  ) async {
+    try {
+      await restClient.unAuth.post(
+        '/users',
+        data: {
+          'name': userData.name,
+          'email': userData.email,
+          'password': userData.password,
+          'profile': 'ADM',
+        },
+      );
+      return Success(nil);
+    } on DioException catch (e, s) {
+      log('Erro ao registra usuário', error: e, stackTrace: s);
+      return Failure(
+        RepositoryException(message: 'Erro ao registrar usuário admin'),
+      );
+    }
+  }
 }
+// 29:22
