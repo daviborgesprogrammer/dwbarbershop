@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class BarbershopNavGlobalKey {
   static BarbershopNavGlobalKey? _instance;
+
   final navKey = GlobalKey<NavigatorState>();
 
   BarbershopNavGlobalKey._();

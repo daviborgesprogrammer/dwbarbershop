@@ -1,16 +1,15 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import '../core/exceptions/service_exception.dart';
-import '../core/fp/either.dart';
-import '../core/fp/nil.dart';
-import '../repositories/user/user_repository.dart';
-import '../services/users_login/user_login_service.dart';
-import './user_register_service.dart';
+import '../../core/exceptions/service_exception.dart';
+import '../../core/fp/either.dart';
+import '../../core/fp/nil.dart';
+import '../../repositories/user/user_repository.dart';
+import '../users_login/user_login_service.dart';
+import 'user_register_adm_service.dart';
 
-class UserRegisterServiceImpl implements UserRegisterService {
+class UserRegisterAdmServiceImpl implements UserRegisterAdmService {
   final UserRepository userRepository;
   final UserLoginService userLoginService;
 
-  UserRegisterServiceImpl({
+  UserRegisterAdmServiceImpl({
     required this.userRepository,
     required this.userLoginService,
   });
