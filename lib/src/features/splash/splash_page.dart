@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/ui/helpers/messages.dart';
-import '../auth/login/login_page.dart';
 import 'splash_vm.dart';
 
 class SplashPage extends ConsumerStatefulWidget {
