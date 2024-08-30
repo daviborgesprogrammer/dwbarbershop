@@ -47,7 +47,9 @@ class HomeEmployeeTile extends StatelessWidget {
                 Text(
                   employee.name,
                   style: const TextStyle(
-                      fontSize: 16, fontWeight: FontWeight.w500,),
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -56,7 +58,9 @@ class HomeEmployeeTile extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).pushNamed('/schedule');
+                      },
                       child: const Text('AGENDAR'),
                     ),
                     OutlinedButton(
@@ -64,7 +68,7 @@ class HomeEmployeeTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 12),
                       ),
                       onPressed: () {},
-                      child: const Text('ver agenda'),
+                      child: const Text('VER AGENDA'),
                     ),
                     const Icon(
                       BarbershopIcons.penEdit,
