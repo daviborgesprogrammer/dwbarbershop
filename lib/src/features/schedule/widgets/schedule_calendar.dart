@@ -7,10 +7,12 @@ import '../../../core/ui/helpers/messages.dart';
 class ScheduleCalendar extends StatefulWidget {
   final VoidCallback cancelPressed;
   final ValueChanged<DateTime> okPressed;
+  final List<String> workDays;
   const ScheduleCalendar({
     super.key,
     required this.cancelPressed,
     required this.okPressed,
+    required this.workDays,
   });
 
   @override
@@ -19,6 +21,23 @@ class ScheduleCalendar extends StatefulWidget {
 
 class _ScheduleCalendarState extends State<ScheduleCalendar> {
   DateTime? selectedDay;
+  late final List<int> weekDaysEnable;
+
+  int convertWeekDay(String weekDay) => switch (weekDay.toLowerCase()) {
+        'seg' => DateTime.monday,
+        'ter' => DateTime.tuesday,
+        'qua' => DateTime.wednesday,
+        'qui' => DateTime.thursday,
+        'sex' => DateTime.friday,
+        'sab' => DateTime.saturday,
+        'dom' => DateTime.sunday,
+        _ => 0,
+      };
+  @override
+  void initState() {
+    weekDaysEnable = widget.workDays.map<int>(convertWeekDay).toList();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +60,9 @@ class _ScheduleCalendarState extends State<ScheduleCalendar> {
             calendarFormat: CalendarFormat.month,
             locale: 'pt_BR',
             availableCalendarFormats: const {CalendarFormat.month: 'Month'},
+            enabledDayPredicate: (day) {
+              return weekDaysEnable.contains(day.weekday);
+            },
             onDaySelected: (selectedDay, focusedDay) {
               setState(() {
                 this.selectedDay = selectedDay;

@@ -9,7 +9,7 @@ import 'features/auth/register/barbershop/barbershop_register_page.dart';
 import 'features/auth/register/user/user_register_page.dart';
 import 'features/employee/register/employee_register_page.dart';
 import 'features/home/adm/home_adm_page.dart';
-import 'features/schedules/schedule_page.dart';
+import 'features/schedule/schedule_page.dart';
 import 'features/splash/splash_page.dart';
 
 class BarbershopApp extends StatelessWidget {
